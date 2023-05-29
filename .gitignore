@@ -1,0 +1,8 @@
+__pycache__
+images
+config
+venv
+
+*.json
+
+.env
