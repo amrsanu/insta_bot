@@ -1,6 +1,5 @@
 """to download all the images from midjournery and add a caption"""
 import os
-import time
 import json
 import openai
 from bs4 import BeautifulSoup
@@ -10,7 +9,7 @@ import requests
 def download_image(url):
     """download the image from url as png"""
 
-    response = requests.get(url, stream=True)
+    response = requests.get(url, stream=True, timeout=60)
     response.raise_for_status()
     with open(os.path.join("images", url.split("/")[-2] + ".png"), "wb") as file:
         for chunk in response.iter_content(chunk_size=8192):
@@ -20,7 +19,7 @@ def download_image(url):
 def get_caption(url):
     """To create a caption using openai chatgpt4"""
 
-    openai.api_key = "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"
+    openai.api_key = os.getenv("GPT4_KEY")
 
     prompt = f"Generate a quote related to given image, also add few hashtags for instagram - {url}"
 
