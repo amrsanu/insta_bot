@@ -1,14 +1,19 @@
-from instabot import Bot
+"""osting photos to instagram"""
+
 import os
-from PIL import Image, ImageOps, ImageFilter
+import json
+
 import shutil
 import time
 import openai
-import json
+from instabot import Bot
+from PIL import Image, ImageFilter
+
 from dotenv import load_dotenv
 import midjourney
 
 load_dotenv()
+
 
 def add_frame(
     image_path, resized_image_path, frame_size=10, zoom_factor=1.2, blur_radius=15

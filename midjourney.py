@@ -4,6 +4,9 @@ import json
 import openai
 from bs4 import BeautifulSoup
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def download_image(url):
